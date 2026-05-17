@@ -1,6 +1,6 @@
-# WTWR (What to Wear?): Back End
+# WeatherFit: Back End
 
-This is the back-end server for the WTWR application. A weather-based clothing recommendation app. The server provides a RESTful API that manages users and clothing items, allowing users to create profiles, add clothing items with weather categories, and like/unlike items.
+This is the back-end server for the WeatherFit application. A weather-based clothing recommendation app. The server provides a RESTful API that manages users and clothing items, allowing users to create profiles, add clothing items with weather categories, and like/unlike items.
 
 # Technologies and Techniques
 
@@ -47,22 +47,6 @@ Code Organization:
 - Modular architecture - Separate folders for routes, controllers, models, utils
 - Environment configuration - Using process.env for port settings
 
-### Testing
+ # Author
+ Joel Alvarez
 
-Before committing your code, make sure you edit the file `sprint.txt` in the root folder. The file `sprint.txt` should contain the number of the sprint you're currently working on. For ex. 12
-
-### Link to the back-end repo:
-
-https://github.com/Alvarez-J1/se_project_express
-
-### Link to the front-end repo:
-
-https://github.com/Alvarez-J1/se_project_react
-
-### Deployed project's domain name:
-
-gcp-demoo.jumpingcrab.com
-
-### API domain name:
-
-api.gcp-demoo.jumpingcrab.com
