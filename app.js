@@ -10,11 +10,22 @@ const { requestLogger, errorLogger } = require("./middlewares/logger");
 
 const NotFoundError = require("./errors/NotFoundError");
 
-require("./utils/db");
+const { ALLOWED_ORIGIN, CLIENT_URL } = require("./utils/config");
+
+const connectDB = require("./utils/db");
 
 const app = express();
 
 const { PORT = 3001 } = process.env;
+const HOST = "0.0.0.0";
+
+const allowedOrigins = [
+  CLIENT_URL,
+  ALLOWED_ORIGIN,
+  "http://localhost:3000",
+  "http://localhost:3001",
+  "http://localhost:5173",
+].filter(Boolean);
 
 app.use(requestLogger);
 
@@ -23,7 +34,21 @@ const mainRouter = require("./routes/index");
 const errorHandler = require("./middlewares/error-handler");
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      return callback(new Error("Not allowed by CORS"));
+    },
+    credentials: true,
+  })
+);
+
+app.get("/api/health", (req, res) => {
+  res.json({ status: "ok" });
+});
 
 app.get("/crash-test", () => {
   setTimeout(() => {
@@ -50,7 +75,8 @@ app.use(errorHandler);
 module.exports = app;
 
 if (process.env.NODE_ENV !== "test") {
-  app.listen(PORT, () => {
-    console.log(`App listening on port ${PORT}`);
+  app.listen(PORT, HOST, () => {
+    console.log(`App listening on ${HOST}:${PORT}`);
+    connectDB();
   });
 }
