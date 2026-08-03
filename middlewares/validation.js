@@ -4,7 +4,7 @@ const validator = require("validator");
 const objectId = Joi.string().hex().length(24).required().messages({
   "string.hex": "ID must be a hexadecimal value",
   "string.length": "ID must be 24 characters long",
-  "any.required": "ID is  required",
+  "any.required": "ID is required",
 });
 
 const validateItemIdParam = celebrate({
