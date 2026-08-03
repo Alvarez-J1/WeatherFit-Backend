@@ -94,6 +94,7 @@ const validateUpdateUser = celebrate({
         )
         .optional(),
     })
+    .or("name", "avatar")
     .unknown(false),
 });
 
