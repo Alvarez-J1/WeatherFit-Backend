@@ -89,8 +89,8 @@ const validateUpdateUser = celebrate({
       }),
       avatar: Joi.alternatives()
         .try(
-          Joi.string().uri({ scheme: ["http", "https"] }), // valid URL
-          Joi.string().valid("") // OR allow empty string
+          Joi.string().custom(validateURL),
+          Joi.string().valid("")
         )
         .optional(),
     })
