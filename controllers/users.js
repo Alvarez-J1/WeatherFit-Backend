@@ -12,7 +12,7 @@ const NotFoundError = require("../errors/NotFoundError");
 
 const ConflictError = require("../errors/ConflictError");
 
-const UnathorizedError = require("../errors/UnauthorizedError");
+const UnauthorizedError = require("../errors/UnauthorizedError");
 
 const createUser = (req, res, next) => {
   const { name, avatar, email, password } = req.body;
@@ -67,7 +67,7 @@ const login = (req, res, next) => {
     })
     .catch((err) => {
       if (err.message === "Incorrect email or password") {
-        return next(new UnathorizedError("Incorrect email or password"));
+        return next(new UnauthorizedError("Incorrect email or password"));
       }
       return next(err);
     });
