@@ -25,7 +25,6 @@ const createUser = (req, res, next) => {
       return res.status(201).send(userWithoutPassword);
     })
     .catch((err) => {
-      console.error(err);
       if (err.name === "ValidationError") {
         return next(new BadRequestError("Invalid user data"));
       }
