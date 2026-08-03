@@ -20,7 +20,6 @@ const createItem = (req, res, next) => {
     .create({ name, weather, imageUrl, owner })
     .then((createdItem) => res.status(201).send(createdItem))
     .catch((err) => {
-      console.error(err);
       if (err.name === "ValidationError") {
         return next(new BadRequestError("Invalid data provided"));
       }
