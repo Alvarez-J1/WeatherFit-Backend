@@ -11,10 +11,6 @@ const validateItemIdParam = celebrate({
   [Segments.PARAMS]: Joi.object({ itemId: objectId }),
 });
 
-const validateUserIdParam = celebrate({
-  [Segments.PARAMS]: Joi.object({ userId: objectId }),
-});
-
 const validateURL = (value, helpers) => {
   const ok = validator.isURL(value, {
     protocols: ["http", "https"],
@@ -104,6 +100,5 @@ module.exports = {
   validateAuthentication,
   validateURL,
   validateItemIdParam,
-  validateUserIdParam,
   validateUpdateUser,
 };
