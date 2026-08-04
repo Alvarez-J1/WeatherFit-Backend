@@ -23,6 +23,7 @@ const userSchema = new mongoose.Schema({
           validator.isURL(value, {
             protocols: ["http", "https"],
             require_protocol: true,
+            disallow_auth: true,
           })
         );
       },
