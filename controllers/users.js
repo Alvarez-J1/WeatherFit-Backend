@@ -91,6 +91,9 @@ const updateProfile = (req, res, next) => {
       if (err.name === "ValidationError") {
         return next(new BadRequestError("Invalid user data"));
       }
+      if (err.name === "CastError") {
+        return next(new BadRequestError("Invalid user data"));
+      }
       return next(err);
     });
 };
