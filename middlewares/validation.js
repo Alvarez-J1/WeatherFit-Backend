@@ -25,7 +25,7 @@ const validateClothingItemBody = celebrate({
     name: Joi.string().required().min(2).max(30).messages({
       "string.min": 'The minimum length of the "name" field is 2',
       "string.max": 'The maximum length of the "name" field is 30',
-      "string.empty": 'The "name" field must be fulled in',
+      "string.empty": 'The "name" field must be filled in',
     }),
     weather: Joi.string().valid("hot", "warm", "cold").required().messages({
       "any.only": 'The "weather" field must be one of: hot, warm, cold',
