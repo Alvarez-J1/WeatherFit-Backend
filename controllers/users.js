@@ -28,7 +28,7 @@ const createUser = (req, res, next) => {
       if (err.name === "ValidationError") {
         return next(new BadRequestError("Invalid user data"));
       }
-      if (err.name === "MongoServerError" && err.code === 11000) {
+      if (err.code === 11000) {
         return next(new ConflictError("Email already exists"));
       }
       return next(err);
