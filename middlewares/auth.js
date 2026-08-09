@@ -19,6 +19,11 @@ module.exports = (req, res, next) => {
   } catch (err) {
     return next(new UnauthorizedError("Authorization required"));
   }
+
+  if (!payload?._id) {
+    return next(new UnauthorizedError("Authorization required"));
+  }
+
   req.user = payload;
   return next();
 };
