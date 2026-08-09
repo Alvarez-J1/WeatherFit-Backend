@@ -41,7 +41,7 @@ const deleteItem = (req, res, next) => {
       throw new NotFoundError("Item not found");
     })
     .then((foundItem) => {
-      if (foundItem.owner.toString() !== owner) {
+      if (foundItem.owner.toString() !== String(owner)) {
         throw new ForbiddenError("You are not allowed to delete this");
       }
       return foundItem.deleteOne().then(() => {
