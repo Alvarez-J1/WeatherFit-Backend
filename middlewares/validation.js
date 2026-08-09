@@ -50,6 +50,7 @@ const validateUserInfoBody = celebrate({
       "string.uri": 'The "avatar" field must be a valid url',
     }),
     email: Joi.string()
+      .trim()
       .email({ tlds: { allow: false }, minDomainSegments: 2 })
       .required()
       .messages({
