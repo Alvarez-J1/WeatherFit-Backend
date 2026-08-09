@@ -66,6 +66,7 @@ const validateUserInfoBody = celebrate({
 const validateAuthentication = celebrate({
   [Segments.BODY]: Joi.object({
     email: Joi.string()
+      .trim()
       .required()
       .email({ tlds: { allow: false }, minDomainSegments: 2 })
       .messages({
